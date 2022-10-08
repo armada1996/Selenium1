@@ -15,8 +15,6 @@ public class AssQ6HEX {
 		driver.get("https://www.facebook.com");
 		driver.findElement(By.name("login")).click();
 		
-		Thread.sleep(3000);
-		
 		String expectedhexvalue = "#f02849";
 		//String element = driver.findElement(By.xpath("//div[@class='_9ay7']")).getCssValue("color");
 		
