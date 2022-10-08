@@ -1,0 +1,41 @@
+package Assignment17072022;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.Color;
+public class AssQ6HEX {
+	public static void main(String[] args) throws InterruptedException 
+	{
+		System.setProperty("webdriver.chrome.driver","./software/chromedriver.exe");
+		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		
+		driver.get("https://www.facebook.com");
+		driver.findElement(By.name("login")).click();
+		
+		Thread.sleep(3000);
+		
+		String expectedhexvalue = "#f02849";
+		//String element = driver.findElement(By.xpath("//div[@class='_9ay7']")).getCssValue("color");
+		
+		String actualRGBcolor = driver.findElement(By.partialLinkText("Find your account"))
+																		.getCssValue("color");
+		System.out.println(actualRGBcolor); //rgba(240, 40, 73, 1)
+		
+		String element = Color.fromString(actualRGBcolor).asHex();
+		System.out.println();
+		System.out.println(element);
+		System.out.println("================");
+		
+		if(element.equals(expectedhexvalue))
+		{
+			System.out.println("PASS : Hexa Is Same");
+		}
+		else
+		{
+			System.out.println("FAIL : Hexa Is Not Same");
+		}
+	}
+}
